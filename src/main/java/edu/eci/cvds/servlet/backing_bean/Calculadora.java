@@ -9,16 +9,19 @@ import java.util.stream.Collectors;
 
 @ManagedBean(name = "calculadoraBean")
 @ApplicationScoped
+
 public class Calculadora {
+
     private double media;
     private int cantidadNumeros;
     private double moda;
     private double desviacionEstandar;
     private double varianza;
     private List<Double> listaValores;
+    public String numeros;
 
     public Calculadora(){
-
+        numeros = "";
     }
 
     public double getMedia() {
@@ -48,6 +51,7 @@ public class Calculadora {
     public void setDesviacionEstandar(double desviacionEstandar) {
         this.desviacionEstandar = desviacionEstandar;
     }
+
     public void setMedia(double media) {
         this.media = media;
     }
@@ -120,16 +124,47 @@ public class Calculadora {
     }
 
     /**
+     * Calcula la varianza de una lista de valores dada
+      * @param valores Lista de valores
+     * @return varianza
+     */
+    public double calculateVariance(String valores){
+        List<Double> values = convertValues(valores);
+        double promedioV = calculateMean(valores);
+        for (double d: values) {
+            varianza += Math.pow((d-promedioV),2)/cantidadNumeros;
+        }
+        return varianza;
+    }
+
+    /**
+     * Reinicia la calculadora a los valores por defecto
+     */
+    public void restart() {
+        cantidadNumeros = 0;
+        media = 0;
+        desviacionEstandar = 0;
+        varianza = 0;
+        moda  = 0;
+        listaValores = new ArrayList<Double>();
+    }
+
+    /**
      * Convierte un string a una lista de valores decimales
      * @param valores
      * @return
      */
     public List<Double> convertValues(String valores){
+        numeros = valores;
         this.listaValores = new ArrayList<>();
-        for (String val: valores.split(",")) {
+        for (String val: valores.split(";")) {
             listaValores.add(Double.parseDouble(val));
         }
         cantidadNumeros = listaValores.size();
+
         return listaValores;
     }
+
+
+
 }

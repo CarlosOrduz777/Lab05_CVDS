@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<head>
+    <title>Title</title>
+</head>
+<h:body>
+
+<h:form id="calculadora_form">
+
+    <p:inputText id="numeros" value="#{calculadoraBean.numeros}" binding="#{input}"/>
+    <br></br>
+
+
+    <p:outputLabel id="moda" value="#{calculadoraBean.moda}"/>
+    <br></br>
+    <p:commandButton id="CalculoModa" value="Obtener Moda" update="calculadora_form"
+                     actionListener="#{calculadoraBean.calculateMode(input.value)}" styleClass="rounded-button"/>
+    <br></br>
+
+
+    <br></br>
+    <p:outputLabel id="promedio" value="#{calculadoraBean.promedio}"/>
+    <br></br>
+    <p:commandButton id="CalculoPromedio" value="Obtener Promedio" update="calculadora_form"
+                     actionListener="#{calculadoraBean.calculateMean(input.value)}" styleClass="rounded-button"/>
+    <br></br>
+
+    <br></br>
+    <p:outputLabel id="desviacionEstandar" value="#{calculadoraBean.desviacionEstandar}"/>
+    <br></br>
+    <p:commandButton id="CalculoDS" value="Obtener Desviación Estándar" update="calculadora_form"
+                     actionListener="#{calculadoraBean.calculateStandardDeviation(input.value)}"
+                     styleClass="rounded-button"/>
+    <br></br>
+
+    <br></br>
+    <p:outputLabel id="varianza" value="#{calculadoraBean.varianza}"/>
+    <br></br>
+    <p:commandButton id="CalculoVarianza" value="Obtener Varianza" update="calculadora_form"
+                     actionListener="#{calculadoraBean.calculateVariance(input.value)}" styleClass="rounded-button"/>
+    <br></br>
+
+    <br></br>
+    <p:commandButton id="Restart" value="Reiniciar" update="calculadora_form"
+                     actionListener="#{calculadoraBean.restart()}" styleClass="rounded-button ui-button-danger"/>
+    <br></br>
+
+
+</h:form>
+
+</h:body>
+</html>
