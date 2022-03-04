@@ -82,4 +82,45 @@ public class AnotherServlet extends HttpServlet{
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            Writer responseWriter = resp.getWriter();
+
+            //Recibir el id ingresado
+            String id = req.getParameter("id");
+            //Consultar el ToDo
+            Todo todo = Service.getTodo(Integer.parseInt(id));
+
+            //Respuesta OK
+            resp.setStatus(HttpServletResponse.SC_OK);
+
+            //Crear List para generar la tabla
+            todoList = new ArrayList<Todo>();
+            todoList.add(todo);
+
+            //Mostrar la tabla
+            responseWriter.write(Service.todosToHTMLTable(todoList));
+        }
+        //Valor nulo
+        catch(NumberFormatException e){
+            sendHtmlError(resp, "400 : Requerimiento inválido.", HttpServletResponse.SC_BAD_REQUEST);
+        }
+
+        //Error en el servidor
+        catch (MalformedURLException e){
+            sendHtmlError(resp, "500 : Error interno del servidor.", HttpServletResponse.SC_BAD_REQUEST);
+        }
+
+        //Valor nulo o caracter no valido
+        catch(IOException e) {
+            sendHtmlError(resp, "404 : No existe un item con el identificador dado.", HttpServletResponse.SC_NOT_FOUND);
+        }
+
+        //Excepcion para valor nulo
+        catch(Exception e){
+            sendHtmlError(resp, "400 : Requerimiento inválido", HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
 }
