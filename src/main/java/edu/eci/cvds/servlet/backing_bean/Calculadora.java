@@ -24,6 +24,14 @@ public class Calculadora {
         numeros = "";
     }
 
+    public String getNumeros() {
+        return numeros;
+    }
+
+    public void setNumeros(String numeros) {
+        this.numeros = numeros;
+    }
+
     public double getMedia() {
         return media;
     }
@@ -68,11 +76,21 @@ public class Calculadora {
     ///////////////////////////
 
     /**
-     * Retorna el promedio de una lista de valores
-     * @param valores lista de valores a calcular promedio
-     * @return
+     * Calcula la media de una lista de valores
+     * @param valores lista de valores a calcular moda
+     * @return La media de la lisa de valores
      */
     public double calculateMean(String valores){
+        this.media = calculateAverage(valores);
+        return this.media;
+    }
+
+    /**
+     * Calcula el promedio de una lista de valores
+     * @param valores Lista de valores a calcular el promedio
+     * @return El promedio de una lista de valores
+     */
+    public double calculateAverage(String valores){
         List<Double> values =  convertValues(valores);
         Double promedio = 0.0;
         for(Double val : values){
@@ -82,8 +100,13 @@ public class Calculadora {
         return promedio;
     }
 
-    public double calculateStandardDesviation(String valores){
-        Double resultMedia = calculateMean(valores);
+    /**
+     * Calcular la desviación estandar
+     * @param valores Lista de valores
+     * @return Desviciacion estandar de la lista de valores
+     */
+    public double calculateStandardDeviation(String valores){
+        Double resultMedia = calculateAverage(valores);
         List<Double> values = convertValues(valores);
         Double suma = 0.0;
         for (Double dato: values) {
@@ -92,7 +115,7 @@ public class Calculadora {
         }
         suma = suma/cantidadNumeros;
         suma = Math.pow(suma,0.5);
-        desviacionEstandar = suma;
+        this.desviacionEstandar = suma;
         return suma;
     }
 
@@ -130,7 +153,7 @@ public class Calculadora {
      */
     public double calculateVariance(String valores){
         List<Double> values = convertValues(valores);
-        double promedioV = calculateMean(valores);
+        double promedioV = calculateAverage(valores);
         for (double d: values) {
             varianza += Math.pow((d-promedioV),2)/cantidadNumeros;
         }
@@ -151,8 +174,8 @@ public class Calculadora {
 
     /**
      * Convierte un string a una lista de valores decimales
-     * @param valores
-     * @return
+     * @param valores Lista de valores
+     * @return Lista de valores en decimal
      */
     public List<Double> convertValues(String valores){
         numeros = valores;
