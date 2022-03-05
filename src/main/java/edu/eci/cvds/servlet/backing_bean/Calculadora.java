@@ -152,6 +152,7 @@ public class Calculadora {
      * @return varianza
      */
     public double calculateVariance(String valores){
+        this.varianza = 0;
         List<Double> values = convertValues(valores);
         double promedioV = calculateAverage(valores);
         for (double d: values) {
