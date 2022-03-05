@@ -15,4 +15,4 @@ Podemos evidenciar que el usando el GET nos muestra por completo el path, es dec
 Cuando se ingresa en el espacio un valor diferente a un número válido se muestra una advertencia indicándonos que el valor ingresado no es un valor de tipo numérico. Si el valor ingresado es válido se muestran los datos solicitados como se ve a continuación:
 
 ## Parte IV
-![Prueba de Ejecucion]()
+![Prueba de Ejecucion](https://github.com/CarlosOrduz777/Lab05_CVDS/blob/ramitos/imagenes/parteIV.PNG)
