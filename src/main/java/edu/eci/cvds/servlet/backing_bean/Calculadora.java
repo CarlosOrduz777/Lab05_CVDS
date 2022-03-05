@@ -2,13 +2,15 @@ package edu.eci.cvds.servlet.backing_bean;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.criteria.CriteriaBuilder;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @ManagedBean(name = "calculadoraBean")
-@ApplicationScoped
+//@ApplicationScoped
+@SessionScoped
 
 public class Calculadora {
 
