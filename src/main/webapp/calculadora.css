@@ -1,0 +1,8 @@
+#contenedor{
+    text-align: center;
+    border: 3px solid green;
+}
+h1{
+    text-transform: uppercase;
+    color: red;
+}
