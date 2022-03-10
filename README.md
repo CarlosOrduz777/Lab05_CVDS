@@ -42,3 +42,4 @@ Cuando se ingresa en el espacio un valor diferente a un número válido se muest
 ### Usando Edge y SessionScoped
 ![Se Edge](https://github.com/CarlosOrduz777/Lab05_CVDS/blob/ramitos/imagenes/parteIV-3.PNG)
 #### Se cambió el valor de la media en Edge y no se reflejan los cambios en Chrome (Usando SessionScoped)
+[![CircleCI](https://circleci.com/gh/CarlosOrduz777/Lab05_CVDS/tree/master.svg?style=svg)](https://circleci.com/gh/CarlosOrduz777/Lab05_CVDS/tree/master)
